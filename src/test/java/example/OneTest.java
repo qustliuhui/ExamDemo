@@ -1,7 +1,11 @@
 package example;
 
 import com.migu.schedule.Schedule;
+import com.migu.schedule.info.TaskInfo;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,6 +22,29 @@ public class OneTest {
     Schedule s = new Schedule();
     //Test foo
     assertEquals("schedule", s.init());
+
+    assertEquals("schedule", s.registerNode(1));
+
+    assertEquals("schedule", s.registerNode(2));
+
+    assertEquals("schedule", s.unregisterNode(1));
+
+    assertEquals("schedule", s.addTask(1,1));
+
+    assertEquals("schedule", s.addTask(2,2));
+
+    assertEquals("schedule", s.deleteTask(1));
+
+    assertEquals("schedule", s.scheduleTask(1));
+
+    List<TaskInfo> list = new ArrayList<TaskInfo>();
+    TaskInfo taskInfo = new TaskInfo();
+    taskInfo.setTaskId(1);
+    taskInfo.setNodeId(1);
+    list.add(taskInfo);
+    assertEquals("schedule", list);
+
+
 
   }
 
