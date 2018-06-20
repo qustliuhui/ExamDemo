@@ -144,7 +144,15 @@ public class Schedule {
             //return ReturnCodeKeys.E016;
             return tasks;
         }
-        return list;
+        List<TaskInfo> taskList = new ArrayList();
+        for (TaskInfo task : tasks) {
+            for (TaskInfo taskInfo : list) {
+                if(task.getTaskId()==taskInfo.getTaskId()){
+                    taskList.add(taskInfo);
+                }
+            }
+        }
+        return taskList;
     }
 
 }
