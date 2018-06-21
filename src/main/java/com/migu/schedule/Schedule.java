@@ -14,13 +14,13 @@ public class Schedule {
     //节点
     private Set<Integer> registSet;
     //任务
-    private Queue<Integer> blockingQueue;
+    private Queue<Integer> blockingQueue; 
     //任务 消耗
     private Map<Integer, Integer> taskMap;
     //
     private List<TaskInfo> list;
 
-    public int init() {
+    public Integer init() {
         // TODO 方法未实现
 
         if (registSet == null || registSet.isEmpty()) {
@@ -29,29 +29,17 @@ public class Schedule {
             registSet = null;
             System.gc();
         }
-        if (blockingQueue.isEmpty() || blockingQueue == null) {
-            blockingQueue = new ConcurrentLinkedQueue<Integer>();
-        } else {
-            blockingQueue = null;
-            System.gc();
-        }
-        if (taskMap.isEmpty() || taskMap == null) {
-            taskMap = new HashMap<Integer, Integer>();
-        } else {
-            taskMap = null;
-            System.gc();
-        }
-        if (list.isEmpty() || list == null) {
-            list = new ArrayList<TaskInfo>();
-        } else {
-            list = null;
-            System.gc();
-        }
+
+        blockingQueue = new ConcurrentLinkedQueue<Integer>();
+
+        taskMap = new HashMap<Integer, Integer>();
+
+        list = new ArrayList<TaskInfo>();
         return ReturnCodeKeys.E001;
     }
 
 
-    public int registerNode(int nodeId) {
+    public Integer registerNode(Integer nodeId) {
         // TODO 方法未实现
         if (registSet.contains(nodeId)) {
             return ReturnCodeKeys.E005;
@@ -64,7 +52,7 @@ public class Schedule {
         }
     }
 
-    public int unregisterNode(int nodeId) {
+    public Integer unregisterNode(Integer nodeId) {
         // TODO 方法未实现
         if (nodeId <= 0) {
             return ReturnCodeKeys.E004;
@@ -77,7 +65,7 @@ public class Schedule {
     }
 
 
-    public int addTask(int taskId, int consumption) {
+    public Integer addTask(Integer taskId, Integer consumption) {
         // TODO 方法未实现
         if (taskId <= 0) {
             return ReturnCodeKeys.E009;
@@ -93,7 +81,7 @@ public class Schedule {
     }
 
 
-    public int deleteTask(int taskId) {
+    public Integer deleteTask(Integer taskId) {
         // TODO 方法未实现
         if (taskId <= 0) {
             return ReturnCodeKeys.E009;
@@ -108,7 +96,7 @@ public class Schedule {
     }
 
 
-    public int scheduleTask(int threshold) {
+    public Integer scheduleTask(Integer threshold) {
         // TODO 方法未实现
         if (threshold < 0) {
             return ReturnCodeKeys.E002;
@@ -138,21 +126,12 @@ public class Schedule {
     }
 
 
-    public List<TaskInfo> queryTaskStatus(List<TaskInfo> tasks) {
+    public int queryTaskStatus(List<TaskInfo> tasks) {
         // TODO 方法未实现
-        if (tasks == null) {
-            //return ReturnCodeKeys.E016;
-            return tasks;
+        if(tasks == null){
+            return ReturnCodeKeys.E016;
         }
-        List<TaskInfo> taskList = new ArrayList();
-        for (TaskInfo task : tasks) {
-            for (TaskInfo taskInfo : list) {
-                if(task.getTaskId()==taskInfo.getTaskId()){
-                    taskList.add(taskInfo);
-                }
-            }
-        }
-        return taskList;
+        return ReturnCodeKeys.E000;
     }
 
 }
