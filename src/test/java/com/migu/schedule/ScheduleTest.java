@@ -1,12 +1,13 @@
 package com.migu.schedule;
 
-import com.migu.schedule.constants.ReturnCodeKeys;
-import com.migu.schedule.info.TaskInfo;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.migu.schedule.constants.ReturnCodeKeys;
+import com.migu.schedule.info.TaskInfo;
 
 public class ScheduleTest
     {
